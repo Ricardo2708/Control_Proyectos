@@ -26,121 +26,7 @@ let jqCdn2 = 'https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js'
 let jqCdn3 = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" 
 let jqCdn4 = 'https://cdn.plyr.io/3.7.2/plyr.js'
 
-function chats(){
-  loadJs(jqCdn2, () =>{
-    $.ajax({
-      method: 'GET',
-      url: '/inicio/',
-      dataType: "json",
-      success: function(response) {
-        const inicio = response.inicio.length
-        const cobro = response.cobro.length
-        const final = response.final.length
-        
 
-        // Estado Contratistas
-        const activo = response.activo.length
-        const inactivo = response.inactivo.length
-
-        // Porcentajes
-
-        const porcentaje1 = response.porcentaje1.length
-        const porcentaje2 = response.porcentaje2.length
-        const porcentaje3 = response.porcentaje3.length
-
-        
-          var grafico = document.getElementById('grafica').getContext('2d')
-          var chart1  = new Chart(grafico,{
-            type:"bar",
-            data:{
-              labels:['Inicio', 'Cobro', 'Final'],
-              datasets:[
-                {
-                  label: `Estado De Obras`,
-                  backgroundColor: [
-                    'rgba(255, 99, 132, 0.7)',
-                    'rgba(255, 159, 64, 0.7)',
-                    'rgba(75, 192, 192, 0.7)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(201, 203, 207, 0.2)'
-                  ],
-                  borderColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(255, 159, 64)',
-                    'rgb(75, 192, 192)',
-                    'rgb(54, 162, 235)',
-                    'rgb(153, 102, 255)',
-                    'rgb(201, 203, 207)'
-                  ],
-                  borderWidth: 1,
-                  data:[inicio,cobro,final],
-                }
-              ]
-            },
-            options: {
-              indexAxis: 'x',
-            }
-          })
-      
-          let grafico2 = document.getElementById('grafica2').getContext('2d')
-          var chart2 = new Chart(grafico2,{
-            type:"polarArea",
-            data:{
-              labels:['Cambio De Contratista | Activo', 'Cambio De Contratista | Inactivo'],
-              datasets:[
-                {
-                  label:`Numero De Registros`,
-                  backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)',
-                    'rgba(153, 102, 255)',
-                    'rgb(255, 205, 86)'
-                  ],
-                  borderColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)',
-                  ],
-                  borderWidth: 1,
-                  data: [activo, inactivo],
-                }
-              ]
-            }
-
-          })
-
-          let grafico3 = document.getElementById('grafica3').getContext('2d')
-          var chart3 = new Chart(grafico3,{
-            type:"doughnut",
-            data:{
-              labels:['Pago:100%', 'Pago:50%', 'Pago:0%'],
-              datasets:[
-                {
-                  label: "Contratistas",
-                  backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)'
-                  ],
-                  borderWidth: 1,
-                  data:[porcentaje3,porcentaje2,porcentaje1],
-                }
-              ]
-            }
-
-          })
-        
-
-        
-      },
-      error: function(response){
-        console.log(response);
-      }
-    }); 
-  })
-};
 
 $(".btn-block").addClass("message")
 
@@ -455,6 +341,122 @@ function notificacion(){
 
 }
 notificacion()
+
+function chats(){
+  loadJs(jqCdn2, () =>{
+    $.ajax({
+      method: 'GET',
+      url: '/inicio/',
+      dataType: "json",
+      success: function(response) {
+        const inicio = response.inicio.length
+        const cobro = response.cobro.length
+        const final = response.final.length
+        
+
+        // Estado Contratistas
+        const activo = response.activo.length
+        const inactivo = response.inactivo.length
+
+        // Porcentajes
+
+        const porcentaje1 = response.porcentaje1.length
+        const porcentaje2 = response.porcentaje2.length
+        const porcentaje3 = response.porcentaje3.length
+
+        
+          var grafico = document.getElementById('grafica').getContext('2d')
+          var chart1  = new Chart(grafico,{
+            type:"bar",
+            data:{
+              labels:['Inicio', 'Cobro', 'Final'],
+              datasets:[
+                {
+                  label: `Estado De Obras`,
+                  backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(255, 159, 64, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(201, 203, 207, 0.2)'
+                  ],
+                  borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                    'rgb(201, 203, 207)'
+                  ],
+                  borderWidth: 1,
+                  data:[inicio,cobro,final],
+                }
+              ]
+            },
+            options: {
+              indexAxis: 'x',
+            }
+          })
+      
+          let grafico2 = document.getElementById('grafica2').getContext('2d')
+          var chart2 = new Chart(grafico2,{
+            type:"polarArea",
+            data:{
+              labels:['Cambio De Contratista | Activo', 'Cambio De Contratista | Inactivo'],
+              datasets:[
+                {
+                  label:`Numero De Registros`,
+                  backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)',
+                    'rgba(153, 102, 255)',
+                    'rgb(255, 205, 86)'
+                  ],
+                  borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)',
+                  ],
+                  borderWidth: 1,
+                  data: [activo, inactivo],
+                }
+              ]
+            }
+
+          })
+
+          let grafico3 = document.getElementById('grafica3').getContext('2d')
+          var chart3 = new Chart(grafico3,{
+            type:"doughnut",
+            data:{
+              labels:['Pago:100%', 'Pago:50%', 'Pago:0%'],
+              datasets:[
+                {
+                  label: "Contratistas",
+                  backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)'
+                  ],
+                  borderWidth: 1,
+                  data:[porcentaje3,porcentaje2,porcentaje1],
+                }
+              ]
+            }
+
+          })
+        
+
+        
+      },
+      error: function(response){
+        console.log(response);
+      }
+    }); 
+  })
+};
 
 window.onload = function() {
   chats()
