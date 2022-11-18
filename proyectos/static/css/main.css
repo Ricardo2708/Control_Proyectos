@@ -492,3 +492,7 @@ table.import-preview tr.update {
         width: 100%;
     }
 }
+
+.mb-2, .my-2{
+    margin-bottom: 1.5rem!important;
+}

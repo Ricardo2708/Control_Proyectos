@@ -135,7 +135,13 @@ loadJs(jqCdn, () => {
 });
 
 loadJs(jqCdn4, () =>{
-  $(".content-header").addClass("contenido")
+  try {
+    $(".content-wrapper .content").addClass("contenido")
+    $(".content-header").addClass("contenido")
+  } catch (error) {
+    console.log(error);
+  }
+
   
   function direccionPrincipal(){
     
@@ -165,7 +171,8 @@ loadJs(jqCdn4, () =>{
   
               <div class="enlaces-inicio">
                 
-                <a href="#" class="btn btn-primary btn-ayuda soporte">Contactanos Ahora</a>
+                <a class="btn btn-primary btn-ayuda" href="https://api.whatsapp.com/send?phone=60447112" >Contactanos Ahora</a>
+                
               </div>
             </div>
             <video id="player" class="video" playsinline controls>
@@ -255,7 +262,7 @@ try{
   <p class="texto-contraseña">Porfavor Ingrese Su Usuario:</p>`; 
 
   const div2 = document.querySelector(".card-body").insertAdjacentHTML("afterend",
-  `<a class="cambio-contraseña" href="#">¿Has Olvidado Tu Contraseña?</a>`);
+  `<a class="cambio-contraseña soporte" href="#">¿Has Olvidado Tu Contraseña?</a>`);
 
 }
 catch{
@@ -263,9 +270,16 @@ catch{
 }
 
 const div4 = document.querySelector("link").insertAdjacentHTML("afterend",
-`<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+` <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css" />
 `);
+
+
+const div5 = document.querySelector("#codeBox").insertAdjacentHTML("afterend",
+` <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+`);
+
+
 
 function notificacion(){
   $.ajax({
