@@ -501,3 +501,6 @@ table.import-preview tr.update {
 .object-tools{
     margin: 0;
 }
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl{
+    margin-top: 20px;
+}
