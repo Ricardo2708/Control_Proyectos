@@ -493,5 +493,11 @@ table.import-preview tr.update {
 }
 
 .mb-2, .my-2{
-    margin-bottom: 1.5rem!important;
+    margin-bottom: 2.5rem!important;
+}
+.content-wrapper>.content{
+    padding: 1rem 1rem;
+}
+.object-tools{
+    margin: 0;
 }
