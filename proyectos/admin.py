@@ -3,7 +3,9 @@ from .models import Proyecto1,Agrupaciones,Contratista,Adicionales,Proyecto1_Adi
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 from import_export.fields import Field
+from django.contrib.auth.admin import UserAdmin
 
+# Inicio De Informacion
 class AgrupacionesAdmin(ImportExportModelAdmin,admin.ModelAdmin):
         search_fields=('codigo','modelo_casa',)
         list_filter=('modelo_casa','descripcion_material',)
@@ -42,6 +44,9 @@ class ContratistaAdmin(ImportExportModelAdmin,admin.ModelAdmin):
         
     )
 
+# Fin Informacion 
+
+# Inicio De Modelos De los proyectos 
 class Proyeto1Resource(resources.ModelResource):
     
     cluster = Field(attribute='cluster_casa', column_name='Cluster')
@@ -49,6 +54,7 @@ class Proyeto1Resource(resources.ModelResource):
     numero = Field(attribute='numero_casa', column_name='N° Casa')
     modelo = Field(attribute='modelo_casa', column_name='Modelo')
     obra = Field(attribute= 'get_products', column_name='Codigo De Obra')
+    # obra2 = Field(attribute= 'get_products2', column_name='Agrupaciones')
     porcentaje = Field(attribute= 'porcentaje_casa', column_name='Porcentaje %')
     contratista1 = Field(attribute= 'contratista_casa', column_name='Contratista De Estuco')
     contratista2 = Field(attribute= 'contratista2_casa', column_name='Contratista De Pintura')
@@ -83,7 +89,7 @@ class Proyeto1Resource(resources.ModelResource):
             'estado_final',
             'estado_contratista'
         )
-        
+      
 class Proyecto1Admin(ImportExportModelAdmin,admin.ModelAdmin):
     readonly_fields = ('precio','subtotal', 'total_casa')
     search_fields=('modelo_casa','poligono_casa','numero_casa', 'orden_casa','estado_casa', 'num_planilla')
@@ -100,6 +106,13 @@ class Proyecto1Admin(ImportExportModelAdmin,admin.ModelAdmin):
         'estado_casa',
         'estado_final'
     )
+    def get_readonly_fields(self, request, obj=None):
+        if obj:  # Si El Objeto existe
+            return self.readonly_fields + ('cluster_casa', 'poligono_casa', 'numero_casa', 'modelo_casa')
+        return self.readonly_fields
+
+    
+
     fieldsets = (
         (
             "Informacion Requerida", {
@@ -118,14 +131,16 @@ class Proyecto1Admin(ImportExportModelAdmin,admin.ModelAdmin):
                             "num_planilla",)
             }
         ),
+        
         (
             "Informe Del Registro", {
                 "description" : "Informacion Adjunta",
                 "classes": ("collapse",), 
-                "fields": ("content",
+                "fields": (
                         "precio",
                         "subtotal",
-                        "total_casa")
+                        "total_casa",
+                        "content")
             }
         ),
     )
@@ -137,6 +152,7 @@ class Proyeto1_AddResource(resources.ModelResource):
     numero = Field(attribute='numero_casa', column_name='N° Casa')
     modelo = Field(attribute='modelo_casa', column_name='Modelo')
     obra = Field(attribute= 'get_products', column_name='Codigo De Obra')
+    # obra2 = Field(attribute= 'get_products2', column_name='Agrupaciones')
     porcentaje = Field(attribute= 'porcentaje_casa', column_name='Porcentaje %')
     contratista1 = Field(attribute= 'contratista_casa', column_name='Contratista De Estuco')
     orden = Field(attribute= 'orden_casa', column_name='N° Orden')
@@ -186,6 +202,10 @@ class Proyecto1_AddAdmin(ImportExportModelAdmin,admin.ModelAdmin):
         'estado_casa',
         'estado_final'
     )
+    def get_readonly_fields(self, request, obj=None):
+        if obj:  # Si El Objeto existe
+            return self.readonly_fields + ('cluster_casa', 'poligono_casa', 'numero_casa', 'modelo_casa')
+        return self.readonly_fields
     fieldsets = (
         (
             "Informacion Requerida", {
@@ -220,6 +240,7 @@ class Proyecto1_AddAdmin(ImportExportModelAdmin,admin.ModelAdmin):
 
 
 
+# Registro de modelos para el admin
 admin.site.register(Agrupaciones,AgrupacionesAdmin)
 admin.site.register(Adicionales,AdicionalesAdmin)
 admin.site.register(Contratista,ContratistaAdmin)

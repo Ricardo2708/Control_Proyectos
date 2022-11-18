@@ -40,14 +40,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'proyectos',
-    'mensajes',
+    'notificaciones',
     'import_export',
+    'ckeditor',
+    'django_extensions',
 ]
 JAZZMIN_SETTINGS ={
-    "site_logo": 'icons/cloud.png',
-    "user_avatar": 'Avatars',
+    
+    "user_avatar": 'https://cdn-icons-png.flaticon.com/512/1782/1782950.png',
     "site_header" : 'Construmas S.A DE C.V',
-    "welcome_sign": "Control De Proyectos",
+    "welcome_sign": "Sistema / Control De Proyectos",
     "copyright": "Construmas S.A DE C.V",
     "changeform_format": "horizontal_tabs",
     "changeform_format_overrides": {"auth.user": "carousel", "auth.group": "carousel"},
@@ -56,6 +58,7 @@ JAZZMIN_SETTINGS ={
         {"model": "auth.user"}
     ],
     "custom_css": "css/main.css",
+    "custom_js": "js/main.js",
     "topmenu_links": [
         {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
         {"model": "auth.User"},
@@ -67,10 +70,10 @@ JAZZMIN_SETTINGS ={
         "auth": "fas fa-users-cog",
         "auth.user": "fas fa-fingerprint",
         "auth.Group": "fas fa-users",
+        "notificaciones.Notificacion": "fas fa-envelope",
         "proyectos.Contratista": "fas fa-toolbox",
         "proyectos.Agrupaciones": "fas fa-tasks" ,
-        "proyectos.Adicionales": "fas fa-plus",
-        "mensajes.Message": "fas fa-inbox "
+        "proyectos.Adicionales": "fas fa-plus"
     },
     # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-book",
@@ -79,6 +82,8 @@ JAZZMIN_SETTINGS ={
     
 }
 JAZZMIN_SETTINGS["show_ui_builder"] = True
+
+
 JAZZMIN_UI_TWEAKS = {
     "navbar_small_text": True,
     "footer_small_text": False,
@@ -92,7 +97,7 @@ JAZZMIN_UI_TWEAKS = {
     "layout_boxed": False,
     "footer_fixed": False,
     "sidebar_fixed": True,
-    "sidebar": "sidebar-light-indigo",
+    "sidebar": "sidebar-light-navy",
     "sidebar_nav_small_text": True,
     "sidebar_disable_expand": False,
     "sidebar_nav_child_indent": False,
@@ -111,11 +116,21 @@ JAZZMIN_UI_TWEAKS = {
     },
     "actions_sticky_top": False
 }
+
+
+
+
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'full',
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source']
+        ],
         'height': 200,
-        'width': 700,
+        'width': 400,
     },
 }
 

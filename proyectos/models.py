@@ -6,12 +6,20 @@ from datetime import datetime
 from django.db.models import Sum
 from decimal import Decimal
 
+from django.contrib.auth.models import User
+
+
+
+
+# Estado de la obra 
+
 ESTADO = (
     ('Inicio', 'Inicio'),
     ('Cobro', 'Cobro'),
     ('Final', 'Final'),
 )
 
+# Informacion (Enlace many to many field o Foreing key con proyectos)
 class Contratista(models.Model):
     nombre_persona = models.CharField(unique = True, max_length=100, verbose_name="Nombre")
     dui_persona = models.CharField(unique = True, max_length=100, verbose_name="Dui")
@@ -30,9 +38,9 @@ class Contratista(models.Model):
         return f'{self.nombre_persona}'
 
 class Agrupaciones(models.Model):
-    codigo = models.CharField(unique = True, max_length=100, verbose_name="Codigo De Obra")
-    modelo_casa = models.CharField(max_length=100, verbose_name="Modelo:")
-    nombre_agru = models.CharField(max_length=100, verbose_name="Agrupacion" ,default='AGRUPACION N°')
+    codigo = models.CharField(unique = True, max_length=100, verbose_name="Codigo")
+    modelo_casa = models.CharField(max_length=100, verbose_name="Modelo")
+    nombre_agru = models.CharField(max_length=100, verbose_name="Agrupaciones" ,default='AGRUPACION N°')
     descripcion_material = models.CharField(max_length=100, verbose_name="Descripcion")
     precio_casa = models.FloatField(verbose_name="Precio Interno", default=0)
     precio_contratista = models.FloatField(verbose_name="Precio Contratista", default=0)
@@ -51,7 +59,7 @@ class Agrupaciones(models.Model):
         super(Agrupaciones, self).save(*args, **kwargs)
 
     def __str__(self):
-        return f'{self.codigo} | {self.modelo_casa} | {self.nombre_agru} | {self.descripcion_material} | {self.precio_casa} | {self.precio_contratista}\n'
+        return f'{self.codigo} | {self.modelo_casa} | {self.nombre_agru} | {self.descripcion_material} | {self.precio_contratista}\n'
 
 class Adicionales(models.Model):
     codigo = models.CharField(unique = True, max_length=100, verbose_name="Codigo De Obra")
@@ -76,9 +84,12 @@ class Adicionales(models.Model):
         super(Adicionales, self).save(*args, **kwargs)
 
     def __str__(self):
-        return f'{self.codigo} | {self.modelo_casa} | {self.kit} | {self.unidad_medida} | {self.precio_cobro} | {self.precio_pago}\n'
+        return f'{self.codigo} | {self.modelo_casa} | {self.kit} | {self.unidad_medida} | {self.precio_pago}\n'
 
-# Create your models here.
+# Fin Informacion
+
+
+# Creacion de modelos de proyectos y proyectos add ->
 class Proyecto1(models.Model):
     #* Campo General
     cluster_casa = models.CharField(max_length=100, verbose_name="Cluster:")
@@ -108,7 +119,7 @@ class Proyecto1(models.Model):
 
     class Meta:
         verbose_name = "Registro"
-        verbose_name_plural = "Nueva San Miguel"
+        verbose_name_plural = "EcoTerra Maquilishuat"
 
     def get_fecha(self):
         fecha = self.created_at
@@ -118,14 +129,24 @@ class Proyecto1(models.Model):
     def get_products(self):
         return ", ".join([p.codigo for p in self.obra.all()] )
 
+    def get_products2(self):
+        return ", ".join([p.nombre_agru for p in self.obra.all()] )
+
+    def get_products3(self):
+        return ", ".join([p.descripcion_material for p in self.obra.all()] )
+
     def clean(self): 
         try:
-            if self.contratista_casa.estado_contratista != True:
-                raise ValidationError(f"El Contratista {self.contratista_casa} Esta Inactivo")
-            elif self.contratista2_casa.estado_contratista != True:
-                raise ValidationError(f"El Contratista ({self.contratista2_casa}) Esta Inactivo")
+            print(self.contratista_casa)
         except:
-            raise ValidationError(f"Ocurrio Un Error (Revisa Los Campos Marcados En Rojo)")
+            raise ValidationError(f"Ocurrio Un Error (Revisa Los Campos)")
+
+        if self.contratista_casa.estado_contratista != True:
+            raise ValidationError(f"El Contratista {self.contratista_casa} Esta Inactivo")
+        elif self.contratista2_casa.estado_contratista != True:
+            raise ValidationError(f"El Contratista ({self.contratista2_casa}) Esta Inactivo")
+
+            
 
         self.poligono_casa = (self.poligono_casa).upper()   
         self.modelo_casa = (self.modelo_casa).upper()  
@@ -210,7 +231,7 @@ class Proyecto1_Adicional(models.Model):
 
     class Meta:
         verbose_name = "Registro"
-        verbose_name_plural = "Nueva San Miguel (Add)"
+        verbose_name_plural = "EcoTerra Maquilishuat (Add)"
 
     def get_fecha(self):
         fecha = self.created_at
@@ -220,20 +241,26 @@ class Proyecto1_Adicional(models.Model):
     def get_products(self):
         return ", ".join([p.codigo for p in self.obra.all()] )
 
+    def get_products2(self):
+        return ", ".join([p.nombre_agru for p in self.obra.all()] )
+
+    def get_products3(self):
+        return ", ".join([p.descripcion_material for p in self.obra.all()] )
+
     def clean(self): 
         try:
-            if self.contratista_casa.estado_contratista != True:
-                raise ValidationError(f"El Contratista {self.contratista_casa} Esta Inactivo")
-            elif self.contratista2_casa.estado_contratista != True:
-                raise ValidationError(f"El Contratista ({self.contratista2_casa}) Esta Inactivo")
+            print(self.contratista_casa)
         except:
-            raise ValidationError(f"Ocurrio Un Error (Revisa Los Campos Marcados En Rojo)")
+            raise ValidationError(f"Ocurrio Un Error (Revisa Los Campos)")
+
+        if self.contratista_casa.estado_contratista != True:
+            raise ValidationError(f"El Contratista {self.contratista_casa} Esta Inactivo")
 
         self.poligono_casa = (self.poligono_casa).upper()   
         self.modelo_casa = (self.modelo_casa).upper()  
         if self.updated_at == None:
             with connection.cursor() as cursor:
-                cursor.execute(f"SELECT * FROM proyectos_proyecto1 WHERE cluster_casa = '{self.cluster_casa}' AND poligono_casa = '{self.poligono_casa}' AND numero_casa = '{self.numero_casa}' ")
+                cursor.execute(f"SELECT * FROM proyectos_proyecto1_adicional WHERE cluster_casa = '{self.cluster_casa}' AND poligono_casa = '{self.poligono_casa}' AND numero_casa = '{self.numero_casa}' ")
                 datos = cursor.fetchall()
                 cursor.close()
             if len(datos) > 0:

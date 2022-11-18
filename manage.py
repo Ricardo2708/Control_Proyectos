@@ -19,3 +19,15 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+# Inicia el servidor con: python manage.py runserver
+
+#? Si no has instalado jupyter : pip install jupyter ipython django-extensions
+#? INSTALLED_APPS = [
+#?     ...
+#?     'django_extensions',
+#? ]
+
+
+# Inicia Jupyter con: python manage.py shell_plus --notebook
