@@ -254,6 +254,7 @@ table.import-preview tr.update {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: end;
+    margin-top: 30px;
 }
 .contenedor-grafica{
     width: 100%;
