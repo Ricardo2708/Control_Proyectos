@@ -114,11 +114,21 @@ loadJs(jqCdn, () => {
               toast.addEventListener('mouseleave', Swal.resumeTimer)
             }
           })
+
+          if(mensaje.length == 1){
+            Toast.fire({
+              icon: 'info',
+              title: `Tienes ${mensaje.length} Nueva Notificacion`
+            })
+          }else{
+            Toast.fire({
+              icon: 'info',
+              title: `Tienes ${mensaje.length} Nuevas Notificaciones`
+            })
+
+          }
         
-          Toast.fire({
-            icon: 'info',
-            title: 'Tienes Nuevas Notificaciones'
-          })
+          
           
         }
 
@@ -154,32 +164,59 @@ loadJs(jqCdn4, () =>{
 
         success: function(response){
           const proyecto = response.proyecto
+          const contratista = response.contratistas.length
+          const agrupaciones = response.agrupaciones.length
+          const adicionales = response.adicionales.length
           const div3 = document.querySelector(".contenido").insertAdjacentHTML("afterend",
           `
-          <div class="help-video">
-            <div class="contenido-video">
-              <h2>¿Como Usar La Plataforma?</h2>
-              <p>
-                En esta seccion te enseñaremos a usar la plataforma de manera rapida y sencilla
-                y a la vez utilizando todas sus herramientas 
-              </p>
 
-              <p>
-                Si tienes problemas con el sitio o has detectado algun error comunicate inmediatamente
-                con nosotros para poder ayudarte
-              </p>
-  
-              <div class="enlaces-inicio">
-                
-                <a class="btn btn-primary btn-ayuda" href="https://api.whatsapp.com/send?phone=60447112" >Contactanos Ahora</a>
-                
+          <div class="contenedor-cartas">
+            
+            <div class="card card-informacion card-1" >
+              <i class="fa-solid fa-briefcase icono-card-1"></i>
+              <div class="card-body card-caja">
+                <div class="contenido-card">
+                  <h2>Contratistas Activos</h2>
+                  <p>Datos Generales De Contratistas</p>
+                </div>
+                <div class="numero-card">
+                  ${contratista}
+                </div>
               </div>
             </div>
-            <video id="player" class="video" playsinline controls>
-              <source src="static/video/video1.mp4" type="video/mp4" />
-            </video>
+
+            <div class="card card-informacion card-2">
+            <i class="fa-solid fa-list icono-card-2"></i>
+              
+              <div class="card-body card-caja">
+                <div class="contenido-card">
+                  <h2>Codigos De Obras</h2>
+                  <p>Datos Generales De Las Obras</p>
+                </div>
+                <div class="numero-card">
+                  ${agrupaciones}
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-informacion card-3">
+              <i class="fa-solid fa-plus icono-card-3"></i>
+              <div class="card-body card-caja">
+                <div class="contenido-card">
+                  <h2>Codigos Adicionales</h2>
+                  <p>Datos Generales De Los Proyectos</p>  
+                </div>
+                <div class="numero-card">
+                  ${adicionales}
+                </div>
+              </div>
+            </div>
+
+
           </div>
-          <br>
+
+
+          <hr>
   
           <h3 class="titulo-estadisticas">${proyecto}</h3>
           <p class="texto-estadisticas">Las estadisticas se muestran en tiempo real</p>
@@ -200,6 +237,33 @@ loadJs(jqCdn4, () =>{
   
           </div>
           <br/>
+
+
+          <hr>
+
+          <div class="help-video">
+            <div class="contenido-video">
+              <h2>¿Como Usar La Plataforma?</h2>
+              <p>
+                En esta seccion te enseñaremos a usar la plataforma de manera rapida y sencilla
+                y a la vez utilizando todas sus herramientas 
+              </p>
+
+              <p>
+                Si tienes problemas con el sitio o has detectado algun error comunicate inmediatamente
+                con nosotros para poder ayudarte
+              </p>
+
+              <div class="enlaces-inicio">
+                
+                <a class="btn btn-primary btn-ayuda" href="https://api.whatsapp.com/send?phone=60447112" >Contactanos Ahora</a>
+                
+              </div>
+            </div>
+            <video id="player" class="video" playsinline controls>
+              <source src="static/video/video1.mp4" type="video/mp4" />
+            </video>
+          </div>
   
       
           `);
@@ -417,7 +481,7 @@ function chats(){
           var chart2 = new Chart(grafico2,{
             type:"polarArea",
             data:{
-              labels:['Cambio De Contratista | Activo', 'Cambio De Contratista | Inactivo'],
+              labels:['Cambio De Contratista | Si', 'Cambio De Contratista | No'],
               datasets:[
                 {
                   label:`Numero De Registros`,

@@ -423,7 +423,6 @@ table.import-preview tr.update {
     padding: 10px 40px;
     margin-bottom: 10px;
     margin-top: -10px;
-    border-bottom: 1px solid #dbdbdb;
 }
 .video{
     width: 90%;
@@ -503,4 +502,110 @@ table.import-preview tr.update {
 }
 .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl{
     margin-top: 20px;
+}
+
+.contenedor-cartas{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+}
+
+.card-informacion{
+    width: 85%;
+    margin: 0px auto;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 0px;
+    position: relative;
+}
+.icono-card-1{
+    font-size: 30px;
+    margin-left: 0px;
+    margin-top: -29px;
+    position: absolute;
+    color: white;
+    background-color: #a058e4;
+    padding: 11px 39px;
+    border-radius: 10px;
+    transition: 0.2s all ease-in-out;
+}
+
+.icono-card-1:hover{
+    margin-top: -35px;
+}
+.icono-card-2{
+    font-size: 30px;
+    margin-left: 0px;
+    margin-top: -29px;
+    position: absolute;
+    color: white;
+    background-color: #5a58e4;
+    padding: 11px 39px;
+    border-radius: 10px;
+    transition: 0.2s all ease-in-out;
+}
+.icono-card-2:hover{
+    margin-top: -35px;
+}
+.icono-card-3{
+    font-size: 30px;
+    margin-left: 0px;
+    margin-top: -29px;
+    position: absolute;
+    color: white;
+    background-color: #e4586f;
+    padding: 11px 39px;
+    border-radius: 10px;
+    transition: 0.2s all ease-in-out;
+}
+.icono-card-3:hover{
+    margin-top: -35px;
+}
+
+.card-1{
+    background-color: #a058e4;
+    color: white;
+}
+.card-2{
+    background-color: #5a58e4;
+    color: white;
+}
+.card-3{
+    background-color: #e4586f;
+    color: white;
+}
+.card-caja{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0;
+}
+.contenido-card{
+    text-align: center;
+    margin-top: 20px;
+
+}
+
+.contenido-card h2{
+    font-size: 16px;
+    font-weight: bold;
+}
+.contenido-card p{
+    font-size: 10px;
+}
+
+.numero-card{
+    font-weight: bold;
+    font-size: 25px;
+    
+}
+
+@media(max-width:720px){
+    .contenedor-cartas{
+        display: flex;
+        flex-direction: column;
+    }
+    .card-informacion{
+        margin-bottom: 50px;
+    }
 }

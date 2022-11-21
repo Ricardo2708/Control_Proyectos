@@ -10,7 +10,7 @@ from django.db import connection
 def index(request):
     if request.method == 'GET':
         name_db= "proyectos_proyecto1"
-        name_proyecto = "Ecoterra Maquilishuat"
+        name_proyecto = "Ecoterra Santa Ana"
         name_array = name_db.split('_')
         if len(name_array) > 2:
             final_path = f"{name_array[1]}_{name_array[2]}"
@@ -49,6 +49,15 @@ def index(request):
             cursor.execute(f"SELECT porcentaje_casa FROM {name_db} WHERE porcentaje_casa = 100")
             datos7 = cursor.fetchall()
 
+            cursor.execute(f"SELECT estado_contratista FROM proyectos_contratista WHERE estado_contratista = 1")
+            datos8 = cursor.fetchall()
+
+            cursor.execute(f"SELECT * FROM proyectos_agrupaciones")
+            datos9 = cursor.fetchall()
+
+            cursor.execute(f"SELECT * FROM proyectos_proyecto1_adicional")
+            datos10 = cursor.fetchall()
+
             cursor.close()
         return JsonResponse({'inicio': datos, 
                             'cobro' : datos2, 
@@ -59,7 +68,10 @@ def index(request):
                             'porcentaje1': datos5,
                             'porcentaje2': datos6,
                             'porcentaje3': datos7,
-                            'path': name_path})
+                            'path': name_path,
+                            'contratistas': datos8,
+                            'agrupaciones': datos9,
+                            'adicionales': datos10})
     else:
         return HttpResponse("Peticion no valida")
 
