@@ -22,11 +22,11 @@ a{
     }
 }
 .vTextField, .vLargeTextField, .vURLField, .vIntegerField, .vBigIntegerField, .vForeignKeyRawIdAdminField, .vDateField, .vTimeField, input[type="number"], input[type="text"]{
-    font-size: 0.765rem;
+    font-size: 0.795rem;
 }
 .form-control{
     font-size: .765rem;
-    height: calc(1.5em + 0.9rem + 3px);
+    height: calc(1.5em + 1rem + 3px);
 }
 .user-panel .info{
     margin-top: 2px;
