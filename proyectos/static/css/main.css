@@ -611,9 +611,7 @@ table.import-preview tr.update {
     padding: 0;
 }
 .contenido-card{
-    text-align: center;
     margin-top: 20px;
-
 }
 
 .contenido-card h2{
@@ -642,7 +640,7 @@ table.import-preview tr.update {
     }
     .card-caja{
         display: grid;
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: 2fr 1fr;
         justify-items: center;
         padding: 0px 15px;
     }
