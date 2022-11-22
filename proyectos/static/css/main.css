@@ -598,7 +598,9 @@ table.import-preview tr.update {
 .numero-card{
     font-weight: bold;
     font-size: 25px;
-    
+}
+.numero-card{
+    margin-top: 20px;
 }
 
 @media(max-width:720px){
@@ -608,5 +610,11 @@ table.import-preview tr.update {
     }
     .card-informacion{
         margin-bottom: 50px;
+    }
+    .card-caja{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        justify-items: center;
+        padding: 0px 15px;
     }
 }

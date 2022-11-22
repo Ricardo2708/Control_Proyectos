@@ -171,12 +171,12 @@ WSGI_APPLICATION = 'Proyecto_Ultimate.wsgi.application'
 
 DATABASES = {
     # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'proyectos',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'rikyjo11',
-    #     'HOST': 'localhost',
-    #     'PORT': 5432,
+    #      'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #      'NAME': 'proyectos',
+    #      'USER': 'construmas',
+    #      'PASSWORD': 'Construmas2022',
+    #      'HOST': 'localhost',
+    #     'PORT': '5432',
     # }
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -234,3 +234,8 @@ STATIC_ROOT = './proyectos/static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+NOTEBOOK_ARGUMENTS = [
+    "--ip", "5.183.11.81",
+    "--port", "8889",
+    "--allow-root"
+]

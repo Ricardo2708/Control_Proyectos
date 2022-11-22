@@ -32,10 +32,10 @@ def index(request):
 
             #? Busqueda del cambio de contratista
 
-            cursor.execute(f"SELECT estado_contratista FROM {name_db} WHERE estado_contratista = 1")
+            cursor.execute(f"SELECT estado_contratista FROM {name_db} WHERE estado_contratista = true")
             datos4 = cursor.fetchall()
 
-            cursor.execute(f"SELECT estado_contratista FROM {name_db} WHERE estado_contratista = 0")
+            cursor.execute(f"SELECT estado_contratista FROM {name_db} WHERE estado_contratista = false")
             datos4_2 = cursor.fetchall()
 
             #? Busqueda Del Porcentaje De Las casas
@@ -49,7 +49,7 @@ def index(request):
             cursor.execute(f"SELECT porcentaje_casa FROM {name_db} WHERE porcentaje_casa = 100")
             datos7 = cursor.fetchall()
 
-            cursor.execute(f"SELECT estado_contratista FROM proyectos_contratista WHERE estado_contratista = 1")
+            cursor.execute(f"SELECT estado_contratista FROM proyectos_contratista WHERE estado_contratista = true")
             datos8 = cursor.fetchall()
 
             cursor.execute(f"SELECT * FROM proyectos_agrupaciones")

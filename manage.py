@@ -32,3 +32,4 @@ if __name__ == '__main__':
 
 # Inicia Jupyter con: python manage.py shell_plus --notebook
 # Inicia Jupyter en remoto: jupyter notebook  --no-browser --ip 192.168.1.207 --port 8080 
+# jupyter notebook --ip='5.183.11.81' --port=8888 --allow-root 

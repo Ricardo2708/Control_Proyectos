@@ -180,7 +180,7 @@ loadJs(jqCdn4, () =>{
                   <p>Datos Generales De Contratistas</p>
                 </div>
                 <div class="numero-card">
-                  ${contratista}
+                  <p>${adicionales}</p>
                 </div>
               </div>
             </div>
@@ -194,7 +194,7 @@ loadJs(jqCdn4, () =>{
                   <p>Datos Generales De Las Obras</p>
                 </div>
                 <div class="numero-card">
-                  ${agrupaciones}
+                  <p>${adicionales}</p>
                 </div>
               </div>
             </div>
@@ -207,7 +207,7 @@ loadJs(jqCdn4, () =>{
                   <p>Datos Generales De Los Proyectos</p>  
                 </div>
                 <div class="numero-card">
-                  ${adicionales}
+                  <p>${adicionales}</p>
                 </div>
               </div>
             </div>
