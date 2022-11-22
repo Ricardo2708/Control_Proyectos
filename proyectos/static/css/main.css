@@ -21,9 +21,7 @@ a{
         margin-top: -50px;
     }
 }
-.vTextField, .vLargeTextField, .vURLField, .vIntegerField, .vBigIntegerField, .vForeignKeyRawIdAdminField, .vDateField, .vTimeField, input[type="number"], input[type="text"]{
-    font-size: 0.795rem;
-}
+
 .form-control{
     font-size: .765rem;
     height: calc(1.5em + 1rem + 3px);
