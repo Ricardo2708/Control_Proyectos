@@ -8,6 +8,15 @@ body{
 a{
     font-weight: 400;
 }
+.login-box, .register-box{
+    width: 400px;
+    max-width: 100%;
+    margin-top: -50px;
+}
+.form-control{
+    font-size: .965rem;
+    height: calc(1.5em + 0.75rem + 3px);
+}
 .user-panel .info{
     margin-top: 2px;
 }
@@ -102,9 +111,8 @@ table.import-preview tr.update {
 }
 
 .input-group:not(.has-validation) > .custom-file:not(:last-child) .custom-file-label::after, .input-group:not(.has-validation) > .custom-select:not(:last-child), .input-group:not(.has-validation) > .form-control:not(:last-child){
-    background-color: white;
+    background-color: whitesmoke;
     margin-top: 3px !important;
-    border: none;
     color: black;
 }
 

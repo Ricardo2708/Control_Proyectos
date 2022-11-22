@@ -323,7 +323,7 @@ try{
   
   const div = document.querySelector(".login-box-msg").innerHTML = `
   <h4 class="login-texto">Sistema / Control De Proyectos</h4>
-  <p class="texto-contraseña">Porfavor Ingrese Su Usuario:</p>`; 
+  <p class="texto-contraseña">Porfavor Ingrese Su Usuario Y Contraseña:</p>`; 
 
   const div2 = document.querySelector(".card-body").insertAdjacentHTML("afterend",
   `<a class="cambio-contraseña soporte" href="#">¿Has Olvidado Tu Contraseña?</a>`);
