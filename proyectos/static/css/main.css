@@ -22,6 +22,10 @@ a{
     }
 }
 
+#jazzy-actions .form-control{
+    font-size: 0.770rem;
+    height: calc(1.5em + 0.8rem + 0px);
+}
 .form-control{
     font-size: 1rem;
     height: calc(1.5em + 0.8rem + 0px);
