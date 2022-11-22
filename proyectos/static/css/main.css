@@ -269,6 +269,13 @@ table.import-preview tr.update {
 .titulo-graficos{
     text-align: center;
 }
+.caja-estadistica{
+    background-color: white;
+    box-shadow: 0px 0px 10px #ededed;
+    width: 98%;
+    margin: 0px auto;
+    border-radius: 10px;
+}
 .graficos{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -276,14 +283,14 @@ table.import-preview tr.update {
     margin-top: 30px;
 }
 .contenedor-grafica{
-    width: 100%;
+    width: 99%;
     margin: 0px auto;
     margin-top: -20px;
     margin-bottom: 10px;
 }
 
 .grafica-reducir{
-    width: 70%;
+    width: 65%;
 }
 
 @media(max-width:750px){
@@ -488,6 +495,7 @@ table.import-preview tr.update {
 .titulo-estadisticas{
     text-align: center;
     font-weight: 600;
+    margin-top: 20px;
 }
 .texto-estadisticas{
     text-align: center;

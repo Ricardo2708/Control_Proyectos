@@ -218,23 +218,27 @@ loadJs(jqCdn4, () =>{
 
           <hr>
   
-          <h3 class="titulo-estadisticas">${proyecto}</h3>
-          <p class="texto-estadisticas">Las estadisticas se muestran en tiempo real</p>
-          <div class="graficos">
-        
-            
-            <div class="contenedor-grafica grafica-reducir">
-              <canvas id="grafica2" width="200" heigth="100"></canvas>
-            </div>
 
-            <div class="contenedor-grafica">
-              <canvas id="grafica" width="200" heigth="100"></canvas>
+          <div class="caja-estadistica">
+            <div class="titulo-grafica">
+              <h3 class="titulo-estadisticas">${proyecto}</h3>
+              <p class="texto-estadisticas">Las estadisticas se muestran en tiempo real</p>
             </div>
-  
-            <div class="contenedor-grafica grafica-reducir">
-              <canvas id="grafica3" width="200" heigth="100"></canvas>
+            <div class="graficos">
+        
+              <div class="contenedor-grafica grafica-reducir">
+                <canvas id="grafica2" width="200" heigth="100"></canvas>
+              </div>
+
+              <div class="contenedor-grafica">
+                <canvas id="grafica" width="200" heigth="100"></canvas>
+              </div>
+    
+              <div class="contenedor-grafica grafica-reducir">
+                <canvas id="grafica3" width="200" heigth="100"></canvas>
+              </div>
+    
             </div>
-  
           </div>
           <br/>
 
