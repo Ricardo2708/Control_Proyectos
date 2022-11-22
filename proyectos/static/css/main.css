@@ -275,6 +275,7 @@ table.import-preview tr.update {
     width: 98%;
     margin: 0px auto;
     border-radius: 10px;
+    padding: 10px;
 }
 .graficos{
     display: grid;
