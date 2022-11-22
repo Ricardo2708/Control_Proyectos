@@ -13,6 +13,14 @@ a{
     max-width: 100%;
     margin-top: -50px;
 }
+
+@media(max-width:420px){
+    .login-box, .register-box{
+        width: 350px;
+        max-width: 100%;
+        margin-top: -50px;
+    }
+}
 .form-control{
     font-size: .965rem;
     height: calc(1.5em + 0.75rem + 3px);
@@ -544,6 +552,7 @@ table.import-preview tr.update {
 
 .icono-card-1:hover{
     margin-top: -35px;
+    
 }
 .icono-card-2{
     font-size: 30px;
